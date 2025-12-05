@@ -1,0 +1,8 @@
+---
+
+nginx_port: 80
+server_port: 8080
+nginx_user: www-data
+nginx_worker_processes: auto
+enable_ssl: false
+

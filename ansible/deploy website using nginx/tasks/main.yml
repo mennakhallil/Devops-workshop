@@ -1,0 +1,7 @@
+#SPDX-License-Identifier: MIT-0
+---
+# tasks file for deploy-website
+
+- import_tasks: nginx.yml
+- import_tasks: website.yml
+- import_tasks: configure_nginx .yml

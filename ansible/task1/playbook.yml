@@ -1,0 +1,51 @@
+---
+- name: download packages
+  hosts: server
+  become: true
+  vars:
+    install_package:
+      - nano
+      - htop
+      - nodejs
+      - ufw
+  
+  tasks:
+    - name: install services
+      apt:
+        name: "{{install_package}}"
+        state: present
+        register: apt_update_result
+        when: install_package | length > 1
+    
+    - name: debug and print output
+      debug:
+        msg: "{{apt_update_result}}"
+   
+    - name: remove nginx
+      apt:
+        name: remove nginx
+        state: absent
+        purge: yes
+        when: ansible_facts['os_family'] == 'Debian'
+    
+    - name: download nginx
+      apt:
+        name: nginx
+        state: present
+        notify:
+          - start and enable nginx
+    
+    - name: copy folder
+      copy:
+        src: /home/copyfile
+        dest: /home/
+        owner: ubuntu1
+        group: ubuntu1
+        mode: '0755'
+  
+  handlers:
+    - name: start and enable nginx
+      service:
+        name: nginx
+        state: restarted
+        https://html5up.net/ethereal/download

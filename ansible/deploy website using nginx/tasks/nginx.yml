@@ -1,0 +1,14 @@
+- name: remove nginx
+  apt:
+    name: nginx
+    state: absent
+    purge: yes
+    update_cache: yes
+  when: ansible_facts['os_family'] == 'Debian'
+
+- name: install nginx
+  apt:
+    name: nginx
+    state: present
+  notify:
+    - start and enable nginx

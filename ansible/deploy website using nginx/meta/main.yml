@@ -1,0 +1,24 @@
+galaxy_info:
+  author: Menna Khalil
+  description: Ansible role to deploy website using Nginx
+  company: Self-employed
+  license: MIT
+  min_ansible_version: 2.9
+  platforms:
+    - name: Ubuntu
+      versions:
+        - focal
+        - jammy
+        - bionic
+    - name: Debian
+      versions:
+        - bullseye
+        - buster
+
+  galaxy_tags:
+    - nginx
+    - web
+    - webserver
+    - deployment
+
+dependencies: []

@@ -1,0 +1,7 @@
+---
+- name:  configure_nginx 
+  template:
+    src: main.j2
+    dest: /tmp/configure_nginx.txt
+  become: true
+

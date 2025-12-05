@@ -1,0 +1,19 @@
+- name: copy website
+  copy:
+    src: /home/ansible/roles/deploy-website/files/website/
+    dest: /var/www/html/website/
+    owner: ubuntu
+    group: ubuntu
+    mode: '0755'
+
+- name: copy setup script
+  copy:
+    src: /home/ansible/roles/deploy-website/files/script.sh
+    dest: /tmp/scripts.sh
+    mode: '0777'
+    owner: ubuntu
+    group: ubuntu
+
+- name: run script
+  shell: /tmp/scripts.sh
+  become: true
